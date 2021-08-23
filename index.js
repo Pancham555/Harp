@@ -12,7 +12,9 @@ const port = process.env.PORT || 8000
 
 app.use(require('./routes'))
 
-app.use(express.static('mern-project/build'))
+if (process.env.NODE_ENV == "production") {
+    app.use(express.static('mern-project/build'))
+}
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`)
