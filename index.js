@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const env = require('dotenv').config()
 const port = process.env.PORT || 5000
 const connect = require('./Database/connection')
 const Model = require('./Database/chatSchema')
