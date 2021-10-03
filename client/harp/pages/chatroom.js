@@ -23,7 +23,7 @@ const Feedback = () => {
         getData()
     }, [chat])
     return (
-        <>
+        <div className='mb-8'>
             <Head>
                 <title>Chat room</title>
             </Head>
@@ -38,7 +38,7 @@ const Feedback = () => {
             </div>
             <ChatSender statechange={text} inputchange={(e) => setText(e.target.value)}
                 click={sendData} />
-        </>
+        </div>
     )
 }
 
