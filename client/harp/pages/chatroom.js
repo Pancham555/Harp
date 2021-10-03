@@ -23,12 +23,12 @@ const Feedback = () => {
         getData()
     }, [chat])
     return (
-        <div className='mb-8'>
+        <>
             <Head>
                 <title>Chat room</title>
             </Head>
             <Navbar />
-            <div className='my-5'>
+            <div className='mt-5 mb-20'>
                 <ChatCard chatman="Unknown" chat="Hello there, this is a chat room,bring your friends here and chat :)" />
                 {chat.map((data, index) => {
                     return <div key={index}>
@@ -38,7 +38,7 @@ const Feedback = () => {
             </div>
             <ChatSender statechange={text} inputchange={(e) => setText(e.target.value)}
                 click={sendData} />
-        </div>
+        </>
     )
 }
 
