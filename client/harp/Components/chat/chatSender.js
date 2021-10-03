@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
-const ChatSender = () => {
+const ChatSender = (props) => {
     const [state, setState] = useState("")
     return (
         <>
@@ -8,10 +8,12 @@ const ChatSender = () => {
             </Head>
             <div className='fixed bottom-0 left-0 right-0 flex justify-center m-5'>
                 <div className="flex justify-center" style={{ width: "36rem" }}>
-                    <input type="text" placeholder='Type a message' value={state} onChange={(e) => setState(e.target.value)}
+                    <input type="text" placeholder='Type a message'
+                        value={props.statechange ? props.statechange : state}
+                        onChange={props.inputchange ? props.inputchange : (e) => setState(e.target.value)}
                         className='w-full h-10 px-2 my-auto font-medium border-2 border-blue-500 rounded-md outline-none ring-blue-500'
                     />
-                    <div className="p-3 mx-1 text-white bg-blue-500 rounded-full cursor-pointer ">
+                    <div className="p-3 mx-1 text-white bg-blue-500 rounded-full cursor-pointer" onClick={props.click}>
                         <svg viewBox="0 0 495.003 495.003" className='w-6 text-white fill-current'>
                             <g>
                                 <path d="M164.711,456.687c0,2.966,1.647,5.686,4.266,7.072c2.617,1.385,5.799,1.207,8.245-0.468l55.09-37.616

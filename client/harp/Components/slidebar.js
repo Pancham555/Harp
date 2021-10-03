@@ -64,7 +64,7 @@ const Slidebar = (props) => {
                                     </span>
                                 </a>
                             </Link>
-                            <Link href='/feedback' passHref>
+                            <Link href='/chatroom' passHref>
                                 <a className="flex items-center justify-start w-full p-4 font-thin text-gray-500 uppercase transition-colors duration-200 border-l-4 focus:border-blue-500 bg-gradient-to-r from-white focus:to-blue-100 dark:from-gray-700 dark:to-gray-800 hover:text-blue-500" href="#">
                                     <span className="text-left">
                                         <svg width="20" height="20" fill="currentColor" className="m-auto" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +73,7 @@ const Slidebar = (props) => {
                                         </svg>
                                     </span>
                                     <span className="mx-4 text-sm font-medium">
-                                        Report an issue
+                                        Chat room
                                     </span>
                                 </a>
                             </Link>

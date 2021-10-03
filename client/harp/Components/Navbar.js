@@ -48,8 +48,8 @@ const Navbar = () => {
                             <Link href='/blog' passHref>
                                 <div className="px-3 mx-2 cursor-pointer">Blog</div>
                             </Link>
-                            <Link href='/feedback' passHref>
-                                <div className="px-3 mx-2 cursor-pointer">Feedback</div>
+                            <Link href='/chatroom' passHref>
+                                <div className="px-3 mx-2 cursor-pointer">Chat room</div>
                             </Link>
                             <Link href='/about' passHref>
                                 <div className="px-3 mx-2 cursor-pointer">About</div>
