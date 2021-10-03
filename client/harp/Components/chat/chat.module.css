@@ -1,0 +1,11 @@
+.rounder {
+  border-radius: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.chat {
+  width: 2rem;
+  background-color: rgba(59, 130, 246);
+  display: inline;
+  height: 1.5rem;
+  clip-path: polygon(50% 0%, 100% 0%, 100% 100%);
+}
