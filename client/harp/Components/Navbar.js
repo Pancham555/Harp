@@ -8,7 +8,7 @@ const Navbar = () => {
     const [opener, setOpener] = useState(false)
     const [searchBar, setSearchBar] = useState(false)
     return (
-        <div className='sticky top-0 left-0 right-0 z-40 bg-white'>
+        <div className='sticky top-0 left-0 right-0 z-40 bg-white' style={{ WebkitTapHighlightColor: "transparent" }}>
             <motion.div
                 initial={{ width: 0, height: 0 }}
                 animate={searchBar ? { width: "auto", height: "auto" } : { width: 0, height: 0 }}
