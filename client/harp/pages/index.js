@@ -1,5 +1,5 @@
 import Navbar from '../Components/Navbar'
-import Loading from '../Components/loading'
+import Loading from '../Components/loader/loading'
 import Card from '../Components/card'
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
@@ -14,7 +14,7 @@ export default function Home() {
   const [display, setDisplay] = useState(false)
   const [grow, setGrow] = useState(6)
   useEffect(() => {
-    router.push('/blog') // For temporary purpose
+    router.push('/blogpage') // For temporary purpose
     document.onscroll = () => {
       var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;

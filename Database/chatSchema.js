@@ -2,9 +2,19 @@ var mongoose = require('mongoose');
 const connect = require('./connection')
 
 const chatSchema = mongoose.Schema({
-    anonymous: String
+    username: String,
+    chatData: String
 })
 
-const chatModel = mongoose.model('dbs', chatSchema)
+const chatRoomSchema = mongoose.Schema({
+    roomName: String,
+    roomOwner: String,
+    roomDescription: String,
+    imageLink: String,
+    participants: [String],
+    chats: [chatSchema]
+})
 
-module.exports = chatModel
+const chatModel = mongoose.model('dbs', chatRoomSchema)
+
+module.exports = { chatModel }

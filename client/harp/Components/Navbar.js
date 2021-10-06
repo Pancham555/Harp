@@ -45,11 +45,11 @@ const Navbar = () => {
                             />
                         </div>
                         <div className="relative hidden mx-5 my-auto text-xl font-medium md:flex justify-evenly">
-                            <Link href='/blog' passHref>
-                                <div className="px-3 mx-2 cursor-pointer">Blog</div>
+                            <Link href='/blogpage' passHref>
+                                <div className="px-3 mx-2 cursor-pointer">Blogs</div>
                             </Link>
-                            <Link href='/chatroom' passHref>
-                                <div className="px-3 mx-2 cursor-pointer">Chat room</div>
+                            <Link href='/feedback' passHref>
+                                <div className="px-3 mx-2 cursor-pointer">Feedback</div>
                             </Link>
                             <Link href='/about' passHref>
                                 <div className="px-3 mx-2 cursor-pointer">About</div>

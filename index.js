@@ -1,50 +1,25 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const env = require('dotenv').config()
 const port = process.env.PORT || 5000
 const connect = require('./Database/connection')
-const Model = require('./Database/chatSchema')
 
-app.use(express.static('./client/harp/out/'))
 app.use(express.json())
 
-app.post('/chatserver', (req, res) => {
-    const { chat } = req.body
-    try {
-        const pushData = async () => {
-            await Model({ anonymous: chat }).save((err, resp) => {
-                if (err || !resp) {
-                    res.send("Data insertion failed")
-                } else {
-                    res.send("Data inserted")
-                }
-            })
+app.use(express.static('./client/harp/out/'))
 
-        }
-        pushData()
-    } catch (error) {
-        console.log(error);
-    }
+app.use('/images', express.static('./images'))
 
-})
+app.use('/blogs', require('./Routes/blog'))
+
+app.use('/chatserver', require('./Routes/feedback'))
+
+app.use(cors({
+    origin: "localhost:3000/*"
+}))
 
 
-app.get('/chatserver:limit?', (req, res) => {
-    try {
-        const showData = async () => {
-            await Model.find().limit(req.query.limit ? req.query.limit : null)
-                .exec((err, resp) => {
-                    if (err || !resp) {
-                        res.send("Unable to find any data")
-                    } else {
-                        res.json(resp)
-                    }
-                })
-        }
-        showData()
-    } catch (error) {
-        console.log(error);
-    }
-})
+app.use('/chatroutes', require('./Routes/routes'))
 
 app.listen(port, () => console.log(`Example app listening on port http://localhost:${port}`))
