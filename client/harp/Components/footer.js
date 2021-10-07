@@ -8,27 +8,106 @@ const Footer = () => {
                 <div className="flex flex-wrap justify-center max-w-6xl m-auto text-gray-800">
                     <div className="w-48 p-5 ">
                         <div className="text-xs font-medium text-gray-500 uppercase">Home</div>
-                        <a className="block my-3" href="#">Services <span className="p-1 text-xs text-teal-600"></span></a><a className="block my-3" href="#">Products <span className="p-1 text-xs text-teal-600"></span></a><a className="block my-3" href="#">About Us <span className="p-1 text-xs text-teal-600"></span></a><a className="block my-3" href="#">Pricing <span className="p-1 text-xs text-teal-600"></span></a><a className="block my-3" href="#">Partners <span className="p-1 text-xs text-teal-600">New</span></a>
+                        <a className="block my-3" href="#">
+                            Services
+                            <span className="p-1 text-xs text-teal-600"></span>
+                        </a>
+                        <a className="block my-3" href="#">
+                            Products <span className="p-1 text-xs text-teal-600"></span>
+                        </a><a className="block my-3" href="#">
+                            About Us
+                            <span className="p-1 text-xs text-teal-600"></span>
+                        </a>
+                        <a className="block my-3" href="#">
+                            Pricing
+                            <span className="p-1 text-xs text-teal-600"></span>
+                        </a><a className="block my-3" href="#">
+                            Partners
+                            <span className="p-1 text-xs text-teal-600">New</span>
+                        </a>
                     </div>
                     <div className="w-48 p-5 ">
                         <div className="text-xs font-medium text-gray-500 uppercase">User</div>
-                        <a className="block my-3" href="#">Sign in <span className="p-1 text-xs text-teal-600"></span></a><a className="block my-3" href="#">New Account <span className="p-1 text-xs text-teal-600"></span></a><a className="block my-3" href="#">Demo <span className="p-1 text-xs text-teal-600">New</span></a><a className="block my-3" href="#">Career <span className="p-1 text-xs text-teal-600">We&quot;re hiring</span></a><a className="block my-3" href="#">Surveys <span className="p-1 text-xs text-teal-600">New</span></a>
+                        <a className="block my-3" href="#">
+                            Sign in
+                            <span className="p-1 text-xs text-teal-600"></span>
+                        </a>
+                        <a className="block my-3" href="#">
+                            New Account
+                            <span className="p-1 text-xs text-teal-600"></span>
+                        </a>
+                        <a className="block my-3" href="#">
+                            Demo
+                            <span className="p-1 text-xs text-teal-600">New</span>
+                        </a>
+                        {/* <a className="block my-3" href="#">
+                            Career
+                            <span className="p-1 text-xs text-teal-600">We&quot;re hiring</span>
+                        </a> */}
+                        <a className="block my-3" href="#">
+                            Surveys
+                            <span className="p-1 text-xs text-teal-600">New</span>
+                        </a>
                     </div>
                     <div className="w-48 p-5 ">
                         <div className="text-xs font-medium text-gray-500 uppercase">Resources</div>
-                        <a className="block my-3" href="#">Documentation <span className="p-1 text-xs text-teal-600"></span></a><a className="block my-3" href="#">Tutorials <span className="p-1 text-xs text-teal-600"></span></a><a className="block my-3" href="#">Support <span className="p-1 text-xs text-teal-600">New</span></a>
+                        <a className="block my-3" href="#">
+                            Documentation
+                            <span className="p-1 text-xs text-teal-600"></span>
+                        </a>
+                        <a className="block my-3" href="#">
+                            Tutorials
+                            <span className="p-1 text-xs text-teal-600"></span>
+                        </a>
+                        <a className="block my-3" href="#">
+                            Support
+                            <span className="p-1 text-xs text-teal-600">New</span>
+                        </a>
                     </div>
                     <div className="w-48 p-5 ">
                         <div className="text-xs font-medium text-gray-500 uppercase">Product</div>
-                        <a className="block my-3" href="#">Our Products <span className="p-1 text-xs text-teal-600"></span></a><a className="block my-3" href="#">Great Deals <span className="p-1 text-xs text-teal-600">New</span></a><a className="block my-3" href="#">Analytics <span className="p-1 text-xs text-teal-600"></span></a><a className="block my-3" href="#">Mobile <span className="p-1 text-xs text-teal-600"></span></a>
+                        <a className="block my-3" href="#">
+                            Our Products
+                            <span className="p-1 text-xs text-teal-600"></span>
+                        </a>
+                        <a className="block my-3" href="#">
+                            Great Deals
+                            <span className="p-1 text-xs text-teal-600">New</span>
+                        </a>
+                        <a className="block my-3" href="#">
+                            Analytics
+                            <span className="p-1 text-xs text-teal-600"></span>
+                        </a>
+                        <a className="block my-3" href="#">
+                            Mobile
+                            <span className="p-1 text-xs text-teal-600"></span>
+                        </a>
                     </div>
                     <div className="w-48 p-5 ">
                         <div className="text-xs font-medium text-gray-500 uppercase">Support</div>
-                        <a className="block my-3" href="#">Help Center <span className="p-1 text-xs text-teal-600"></span></a><a className="block my-3" href="#">Privacy Policy <span className="p-1 text-xs text-teal-600"></span></a><a className="block my-3" href="#">Conditions <span className="p-1 text-xs text-teal-600"></span></a>
+                        <a className="block my-3" href="#">
+                            Help Center
+                            <span className="p-1 text-xs text-teal-600"></span>
+                        </a>
+                        <a className="block my-3" href="#">
+                            Privacy Policy
+                            <span className="p-1 text-xs text-teal-600"></span>
+                        </a>
+                        <a className="block my-3" href="#">
+                            Conditions
+                            <span className="p-1 text-xs text-teal-600"></span>
+                        </a>
                     </div>
                     <div className="w-48 p-5 ">
                         <div className="text-xs font-medium text-gray-500 uppercase">Contact us</div>
-                        <a className="block my-3" href="#">XXX XXXX, Floor 4 San Francisco, CA <span className="p-1 text-xs text-teal-600"></span></a><a className="block my-3 break-all" href="#">contact@company.com <span className="p-1 text-xs text-teal-600"></span></a>
+                        <a className="block my-3" href="#">
+                            XXX XXXX, Floor 4 Assam, India
+                            <span className="p-1 text-xs text-teal-600"></span>
+                        </a>
+                        <a className="block my-3 break-all" href="#">
+                            contact@company.com
+                            <span className="p-1 text-xs text-teal-600"></span>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -13,7 +13,7 @@ app.use('/images', express.static('./images'))
 
 app.use('/blogs', require('./Routes/blog'))
 
-app.use('/chatserver', require('./Routes/feedback'))
+app.use('/feedbackserver', require('./Routes/feedback'))
 
 app.use(cors({
     origin: "localhost:3000/*"

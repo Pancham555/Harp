@@ -9,7 +9,7 @@ const Card = (props) => {
                     height='660'
                     layout='responsive'
                     unoptimized={true}
-                    quality='52'
+                    quality='40'
                     className='w-full h-full'
                 />
             </div>

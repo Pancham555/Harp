@@ -8,12 +8,12 @@ const Feedback = () => {
     const [chat, showChat] = useState([])
     const [text, setText] = useState("")
     const getData = () => {
-        axios.get('/chatserver').then(res => {
+        axios.get('/feedbackserverr').then(res => {
             showChat(res.data)
         }).catch(err => console.log(err))
     }
     const sendData = () => {
-        axios.post('/chatserver', {
+        axios.post('/feedbackserver', {
             chat: text
         }).then(data => console.log(data.data))
             .catch(err => console.log(err))
