@@ -76,7 +76,7 @@ const BlogPage = () => {
                                     height='1000000'
                                     src={data.img}
                                     layout='intrinsic'
-                                    quality='100'
+                                    quality='80'
                                     alt={`carousel card ${index}`}
                                     priority={true}
                                     unoptimized={true}

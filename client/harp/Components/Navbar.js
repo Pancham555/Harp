@@ -13,14 +13,20 @@ const Navbar = () => {
                 initial={{ width: 0, height: 0 }}
                 animate={searchBar ? { width: "auto", height: "auto" } : { width: 0, height: 0 }}
                 transition={{ type: "tween" }}
-                className="fixed top-0 bottom-0 left-0 right-0 z-50 flex justify-center mx-auto overflow-hidden font-medium bg-white shadow-2xl select-none">
+                className="fixed top-0 left-0 right-0 z-50 flex justify-center mx-auto overflow-hidden font-medium shadow-2xl select-none">
                 <div className="absolute top-0 left-0 m-5 text-3xl font-black cursor-pointer" onClick={() => setSearchBar(false)}>&larr;</div>
-                <div className="flex flex-col justify-center w-full h-auto px-5 py-2">
-                    <div className="flex justify-between w-full mx-auto">
-                        <input type="text" placeholder='Enter your search term'
-                            className='w-full h-10 px-2 my-auto border-2 border-blue-500 rounded-md outline-none ring-blue-500'
-                        />
-                        <div className="px-5 py-3 mx-2 text-white bg-blue-500 rounded-md cursor-pointer">Search</div>
+                <div className="flex flex-col h-screen">
+                    <div className="w-screen">
+                        <div className="flex justify-center w-screen px-5 py-16 bg-white">
+                            <div className="flex justify-between w-full h-full">
+                                <input type="text" placeholder='Enter your search term'
+                                    className='w-full h-10 px-2 my-auto border-2 border-blue-500 rounded-md outline-none ring-blue-500'
+                                />
+                                <div className="inline px-5 py-3 mx-2 my-auto text-white bg-blue-500 rounded-md cursor-pointer">Search</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="sticky top-0 bottom-0 left-0 right-0 w-full h-full bg-current" style={{ background: "rgb(0,0,0,0.6)" }}>
                     </div>
                 </div>
             </motion.div>
