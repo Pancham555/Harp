@@ -4,31 +4,25 @@ router.get('/', (req, res) => {
     res.json([
         {
             img: "../images/Antelope-Canyon-Wallpapers.jpg",
-            heading: "Heading",
+            heading: "Today's trending",
             text: `
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Omnis ullam quia repellat eius harum saepe velit aut maxime
-            tempora ipsum.
+           A street vendor was shot dead by terrorists
             `
 
         },
         {
             img: "../images/hdr-landscape-1.jpg",
-            heading: "Heading",
+            heading: "About the company",
             text: `
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Omnis ullam quia repellat eius harum saepe velit aut maxime
-            tempora ipsum.
+            As all of a busy we work here as if it is out own company
             `
 
         },
         {
-            img: "../images/image1.jpg",
-            heading: "Heading",
+            img: "../images/Doge1.jpg",
+            heading: "Meme",
             text: `
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Omnis ullam quia repellat eius harum saepe velit aut maxime
-            tempora ipsum.
+           .
             `
 
         }
