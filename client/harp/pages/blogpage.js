@@ -99,7 +99,7 @@ const BlogPage = () => {
                     return <div key={index} onClick={() => router.push('/blog')}>
                         <Card
                             img={data.img}
-                            alt={`card ${index}`} head={data.heading} txt={data.text} />
+                            alt={`card ${index}`} heading={data.heading} txt={data.text} />
                     </div>
                 })}
             </div>

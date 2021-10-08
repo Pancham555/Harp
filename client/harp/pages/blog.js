@@ -1,10 +1,16 @@
 import React from 'react'
-
+import Head from 'next/head'
 const Blog = () => {
     return (
-        <div>
-            Sorry,no content here
-        </div>
+        <>
+            <Head>
+                <title>Blog</title>
+            </Head>
+            <div>
+                <div className="w-full">
+                </div>
+            </div>
+        </>
     )
 }
 
