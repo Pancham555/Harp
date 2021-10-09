@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from 'react-redux'
+import { linker } from '../redux/redux'
 import Navbar from "../Components/Navbar";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
@@ -11,6 +13,7 @@ import Image from "next/image";
 import { useRouter } from 'next/router'
 const BlogPage = () => {
     const router = useRouter()
+    const dispatch = useDispatch()
     const [blogs, setBlogs] = useState([])
 
     const getBlogData = () => {
@@ -96,7 +99,10 @@ const BlogPage = () => {
             </div>
             <div className="flex flex-wrap my-8 justify-evenly">
                 {blogs.map((data, index) => {
-                    return <div key={index} onClick={() => router.push('/blog')}>
+                    return <div key={index} onClick={() => {
+                        dispatch(linker(data.link));
+                        router.push('/blog');
+                    }}>
                         <Card
                             img={data.img}
                             alt={`card ${index}`} heading={data.heading} txt={data.text} />

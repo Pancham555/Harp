@@ -1,4 +1,20 @@
-const fs = require('fs')
+var http = require('http');
 
-const data = fs.readFileSync(__dirname + "/images/Antelope-Canyon-Wallpapers.jpg").toString('base64')
-const read = fs.writeFileSync(__dirname + "/images/newsimg.jpg", data)
+var options = {
+    host: 'harpnett.herokuapp.com',
+    path: '/'
+}
+var request = http.request(options, function (res) {
+    var data = '';
+    res.on('data', function (chunk) {
+        data += chunk;
+    });
+    res.on('end', function () {
+        console.log(data);
+
+    });
+});
+request.on('error', function (e) {
+    console.log(e.message);
+});
+request.end();

@@ -4,7 +4,8 @@ import * as gtag from '../lib/gtag'
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
 import { AnimateSharedLayout } from 'framer-motion'
-
+import { store } from '../redux/store'
+import { Provider } from 'react-redux'
 const App = ({ Component, pageProps }) => {
   const router = useRouter()
   useEffect(() => {
@@ -38,7 +39,11 @@ const App = ({ Component, pageProps }) => {
           `,
         }}
       ></script>
-      <AnimateSharedLayout><Component {...pageProps} /></AnimateSharedLayout>
+      <Provider store={store}>
+        <AnimateSharedLayout>
+          <Component {...pageProps} />
+        </AnimateSharedLayout>
+      </Provider>
     </>
   )
 }
