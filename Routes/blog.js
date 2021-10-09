@@ -5,27 +5,21 @@ router.get('/', (req, res) => {
         {
             img: "../images/Antelope-Canyon-Wallpapers.jpg",
             heading: "Today's trending",
-            text: `
-        lorem ipsum dolor
-            `,
+            text: false,
             link: "news"
 
         },
         {
             img: "../images/hdr-landscape-1.jpg",
             heading: "About the company",
-            text: `
-            As all of a busy we work here as if it is out own company......
-            `,
+            text: false,
             link: "company"
 
         },
         {
             img: "../images/Doge1.jpg",
             heading: "Meme",
-            text: `
-           ................
-            `,
+            text: false,
             link: "meme"
 
         }
