@@ -7,9 +7,9 @@ const connect = require('./Database/connection')
 
 app.use(express.json())
 
-// app.use(cors({
-//     origin: "*"
-// }))
+app.use(cors({
+    origin: "*"
+}))
 
 app.use(express.static('./client/harp/out/'))
 

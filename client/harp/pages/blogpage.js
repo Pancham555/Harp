@@ -99,13 +99,15 @@ const BlogPage = () => {
             </div>
             <div className="flex flex-wrap my-8 justify-evenly">
                 {blogs.map((data, index) => {
-                    return <div key={index} onClick={() => {
-                        dispatch(linker(data.link));
-                        router.push('/blog');
-                    }}>
+                    return <div key={index}>
                         <Card
                             img={data.img}
-                            alt={`card ${index}`} heading={data.heading} txt={data.text} />
+                            alt={`card ${index}`} heading={data.heading} txt={data.text}
+                            click={() => {
+                                dispatch(linker(data.link));
+                                router.push('/blog');
+                            }}
+                        />
                     </div>
                 })}
             </div>
