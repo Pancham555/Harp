@@ -3,7 +3,7 @@ import Image from 'next/image'
 const Card = (props) => {
     return (
         <div className="max-w-lg mx-auto">
-            <div className="max-w-sm m-5 bg-white border border-gray-200 rounded-lg shadow-md">
+            <div className="max-w-sm my-5 bg-white border border-gray-200 rounded-lg shadow-md">
 
                 <Image className="rounded-t-lg" src={props.img ? props.img : "/ivan-bandura-EWVXMoIWlpA-unsplash.jpg"}
                     alt={props.alt ? props.alt : "dynamic cards"}
