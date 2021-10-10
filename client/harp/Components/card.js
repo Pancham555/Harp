@@ -2,34 +2,25 @@ import React from 'react'
 import Image from 'next/image'
 const Card = (props) => {
     return (
-        <div className="max-w-lg mx-3">
-            <div className="max-w-sm my-5 bg-white border border-gray-200 rounded-lg shadow-md">
-
-                <Image className="rounded-t-lg" src={props.img ? props.img : "/ivan-bandura-EWVXMoIWlpA-unsplash.jpg"}
-                    alt={props.alt ? props.alt : "dynamic cards"}
-                    width='5000'
-                    height='3000'
+        <div className="w-auto h-auto m-5 cursor-pointer select-none md:w-96" onClick={props.click}>
+            <div className="w-full h-64">
+                <Image src={props.img ? props.img : "/ivan-bandura-EWVXMoIWlpA-unsplash.jpg"} alt={props.alt ? props.alt : "dynamic cards"}
+                    width='1000'
+                    height='660'
                     layout='responsive'
                     unoptimized={true}
-                    quality='35'
+                    quality='40'
+                    className='w-full h-full'
                 />
-
-                <div className="p-2">
-
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 break-words">
-                        {props.heading ? props.heading : "Heading"}
-                    </h5>
-
-                    <p className="mb-3 font-medium text-gray-700 break-words">
-                        {props.txt ? props.txt : `
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Omnis ullam quia repellat eius harum saepe velit aut maxime
-                      tempora ipsum.
-                     `}
-                    </p>
-                    <a onClick={props.click} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white duration-150 bg-blue-700 rounded-lg cursor-pointer hover:bg-blue-800 focus:ring-4 focus:ring-blue-300">
-                        Read more
-                    </a>
+            </div>
+            <div className="mx-2 font-medium">
+                <div className="my-2 text-2xl break-words break-all">{props.heading ? props.heading : "Heading"}</div>
+                <div className="break-words break-all">
+                    {props.txt ? props.txt : `
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                     Omnis ullam quia repellat eius harum saepe velit aut maxime
+                     tempora ipsum.
+                    `}
                 </div>
             </div>
         </div>

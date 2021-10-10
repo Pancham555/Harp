@@ -8,6 +8,8 @@ const Chat = () => {
         <>
             <Head>
                 <title>Chats</title>
+                <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,target-densitydpi=device-dpi, user-scalable=no" />
+
             </Head>
             <Navbar />
             <div className='my-5'>

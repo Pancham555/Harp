@@ -27,6 +27,8 @@ const Feedback = () => {
         <>
             <Head>
                 <title>Chat room</title>
+                <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,target-densitydpi=device-dpi, user-scalable=no" />
+
             </Head>
             <Navbar />
             <div className='mt-5 mb-20'>

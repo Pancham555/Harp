@@ -34,6 +34,8 @@ export default function Home() {
       <Head>
         <title>Harp Tech</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,target-densitydpi=device-dpi, user-scalable=no" />
+
       </Head>
       <div style={{ minHeight: "100vh", maxHeight: "100%", height: "100%" }} className='flex flex-col'>
         <Navbar />

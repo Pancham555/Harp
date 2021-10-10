@@ -64,6 +64,8 @@ const BlogPage = () => {
             <Head>
                 <title>Blog</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+                <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,target-densitydpi=device-dpi, user-scalable=no" />
+
             </Head>
             <Navbar />
             <div className="z-0">
@@ -96,6 +98,7 @@ const BlogPage = () => {
                         </div>
                     })}
                 </Carousel>
+
             </div>
             <div className="flex flex-wrap my-8 justify-evenly">
                 {blogs.map((data, index) => {
