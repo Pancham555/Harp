@@ -16,11 +16,11 @@ const Card = (props) => {
 
                 <div className="p-5">
 
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 break-words">
                         {props.heading ? props.heading : "Heading"}
                     </h5>
 
-                    <p className="mb-3 font-medium text-gray-700">
+                    <p className="mb-3 font-medium text-gray-700 break-words">
                         {props.txt ? props.txt : `
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Omnis ullam quia repellat eius harum saepe velit aut maxime
