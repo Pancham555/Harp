@@ -14,7 +14,7 @@ const Card = (props) => {
                     quality='35'
                 />
 
-                <div className="p-5">
+                <div className="p-2">
 
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 break-words">
                         {props.heading ? props.heading : "Heading"}
