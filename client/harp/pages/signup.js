@@ -7,6 +7,7 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Components/footer';
 import Input from '../Components/forms/input';
 import PasswordInput from '../Components/forms/passwordInput';
+import axios from 'axios'
 const Signup = () => {
     const [userData, setuserData] = useState({
         name: "",
@@ -15,7 +16,16 @@ const Signup = () => {
         password: "",
         cpassword: ""
     })
-    const sendUserData = async (e) => { }
+    const sendUserData = async () => {
+        axios.post('/register/signup', {
+            username: userData.name,
+            email: userData.email,
+            phone: userData.phone,
+            password: userData.password,
+            cpassword: userData.cpassword
+        }).then((res) => alert(res.data))
+            .catch((err) => console.log(err))
+    }
 
     return (
         <>

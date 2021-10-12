@@ -33,7 +33,7 @@ router.get('/', (req, res) => {
         return cookieObj
     })
 
-    jwt.verify(cookieObj.harpnett, "Hello world", ((err, resp) => {
+    jwt.verify(cookieObj.harpnett, process.env.JWTSECRET, ((err, resp) => {
         if (err || !resp) {
             res.send("Cookie expired")
         }

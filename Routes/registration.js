@@ -4,15 +4,29 @@ const jwt = require('jsonwebtoken')
 const { userModel } = require('../Database/userSchema')
 
 router.post('/signup', (req, res) => {
-    const { username, email, password, cpassword } = req.body
+    const { username, email, password, cpassword, phone } = req.body
     const saveData = async () => {
-        await new userModel({ username, email, password, cpassword })
+        await new userModel({ username, email, phone, password, cpassword })
             .save((err, resp) => {
                 if (err || !resp) {
                     res.send(`Failed to sign up.Plz try again later => ${err.code}`)
                 }
                 else {
-                    res.send("Sign up successfully")
+                    // Setting cookie
+                    const cookievalue = jwt.sign({ username }, process.env.JWTSECRET, { expiresIn: Date.now() + (60 * 60 * 1000) })
+                    userModel.findOneAndUpdate(
+                        { username }, {
+                        $set: {
+                            cookie: cookievalue
+                        }
+                    }).exec((err, resp) => {
+                        if (!err && resp) {
+                            res.cookie('harpnett', cookievalue, { httpOnly: false, sameSite: false, path: '/' })
+                                .send("Sign up successfully & cookie added")
+                        } else {
+                            res.status(200).send("Something went wrong")
+                        }
+                    })
                 }
             })
     }
@@ -35,7 +49,7 @@ router.post('/signin', (req, res) => {
                 }
                 else {
                     // Setting cookie
-                    const cookievalue = jwt.sign({ emailOrUsername }, "Hello world", { expiresIn: Date.now() + (60 * 60 * 1000) })
+                    const cookievalue = jwt.sign({ emailOrUsername }, process.env.JWTSECRET, { expiresIn: Date.now() + (60 * 60 * 1000) })
                     userModel.findOneAndUpdate(
                         usernameExist ? { username: emailOrUsername } : { email: emailOrUsername }, {
                         $set: {
