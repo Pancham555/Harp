@@ -21,7 +21,7 @@ router.post('/signup', (req, res) => {
                         }
                     }).exec((err, resp) => {
                         if (!err && resp) {
-                            res.cookie('harpnett', cookievalue, { httpOnly: false, sameSite: false, path: '/' })
+                            res.cookie('harpnett', cookievalue, { maxAge: 3600000, httpOnly: true, sameSite: false, path: '/' })
                                 .send("Sign up successfully & cookie added")
                         } else {
                             res.status(200).send("Something went wrong")
