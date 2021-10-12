@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-const connect = require('./connection')
-
+const bcryptjs = require('bcryptjs')
+const connection = require('./connection')
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -23,7 +23,22 @@ const userSchema = new mongoose.Schema({
         minlength: 8,
         required: true
     },
-    feedback: [String]
+    feedback: [String],
+    cookie: String
+})
+
+userSchema.pre('save', async function (next) {
+
+    if (this.isModified('password')) {
+
+        this.password = await bcryptjs.hash(this.password, 12)
+
+        this.cpassword = await bcryptjs.hash(this.cpassword, 12)
+
+    }
+
+    next()
+
 })
 
 const userModel = mongoose.model('user', userSchema)

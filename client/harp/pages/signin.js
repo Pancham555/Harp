@@ -7,12 +7,25 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Components/footer';
 import Input from '../Components/forms/input';
 import PasswordInput from '../Components/forms/passwordInput';
+import axios from 'axios';
 const SignIn = () => {
     const [userData, setuserData] = useState({
-        email: "",
+        emailOrUsername: "",
         password: ""
     })
-    const sendUserData = async (e) => { }
+
+
+    const sendUserData = () => {
+        axios.post('/register/signin', {
+            emailOrUsername: userData.emailOrUsername,
+            password: userData.password,
+
+        }, {
+            withCredentials: true
+        }).then((res) => {
+            alert(res.data)
+        }).catch((err) => alert(err))
+    }
     return (
         <>
             <Head>
@@ -50,7 +63,7 @@ const SignIn = () => {
                         <div className="mt-5 text-2xl font-black">Sign In</div>
 
                         <div className="flex flex-col items-center justify-center w-9/12">
-                            <Input icon='/mail.png' val={userData.email} change={(e) => setuserData({ ...userData, email: e.target.value })} type='email' placeholder='Your Email' />
+                            <Input icon='/mail.png' val={userData.emailOrUsername} change={(e) => setuserData({ ...userData, emailOrUsername: e.target.value })} type='email' placeholder='Your username or email' />
                             <PasswordInput icon='/padlock.png' val={userData.password} change={(e) => setuserData({ ...userData, password: e.target.value })} placeholder='Your Password' />
                             <div className="px-10 py-3 my-4 text-xl text-white bg-blue-500 rounded-md cursor-pointer" onClick={sendUserData}>Log In</div>
                         </div>

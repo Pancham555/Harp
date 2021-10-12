@@ -1,17 +1,25 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
 const env = require('dotenv').config()
 const port = process.env.PORT || 5000
 const connect = require('./Database/connection')
 
 app.use(express.json())
 
+app.use(cookieParser())
+
 app.use(cors({
-    origin: "*"
+    origin: "*",
+    optionsSuccessStatus: 200
 }))
 
 app.use(express.static('./client/harp/out/'))
+
+app.use('/middleware', require('./middleware/middleware'))
+
+app.use('/register', require('./Routes/registration'))
 
 app.use('/images', express.static('./images'))
 
