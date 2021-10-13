@@ -9,7 +9,7 @@ const Blog = () => {
     const [state, setstate] = useState()
     const router = useRouter()
     const getData = () => {
-        if (!value == "noblog") {
+        if (!value == "") {
             axios.get(`/blog/${value}`).then(res => {
                 setstate(res.data)
             }).catch(err => console.log(err))

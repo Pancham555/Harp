@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initial = {
-    value: "noblog"
+    value: ""
 }
 
 export const redux = createSlice({
