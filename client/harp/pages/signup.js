@@ -37,7 +37,7 @@ const Signup = () => {
                 setCookie()
             }
             else {
-                alert("Plz try again later")
+                alert(res.data)
             }
         })
             .catch((err) => console.log(err))

@@ -9,7 +9,8 @@ router.post('/signup', (req, res) => {
         await new userModel({ username, email, phone, password, cpassword })
             .save((err, resp) => {
                 if (err || !resp) {
-                    res.send(`Failed to sign up.Plz try again later => ${err.code}`)
+                    const errmessage = Object.keys(err.keyPattern)[0]
+                    res.send(`${errmessage} already exists`)
                 }
                 else {
                     res.send("Account added successfully")
