@@ -17,8 +17,8 @@ const PageLoader = () => {
     height: 64px;
     margin: 8px;
     border-radius: 50%;
-    border: 6px solid black;
-    border-color: black transparent black transparent;
+    border: 6px solid #3f88f5;
+    border-color: #3f88f5 transparent #3f88f5 transparent;
     animation: lds-dual-ring 1.2s linear infinite;
   }
   @keyframes lds-dual-ring {
@@ -31,7 +31,9 @@ const PageLoader = () => {
   }  
 `}
       </style>
-      <div className="lds-dual-ring"></div>
+      <div className="flex justify-center my-5">
+        <div className="scale-150 lds-dual-ring"></div>
+      </div>
     </>
   )
 }
