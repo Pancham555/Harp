@@ -9,9 +9,14 @@ const Blog = () => {
     const [state, setstate] = useState()
     const router = useRouter()
     const getData = () => {
-        axios.get(`/blog/${value}`).then(res => {
-            setstate(res.data)
-        }).catch(err => console.log(err))
+        if (!value == "noblog") {
+            axios.get(`/blog/${value}`).then(res => {
+                setstate(res.data)
+            }).catch(err => console.log(err))
+        }
+        else {
+            router.push('/blogpage')
+        }
     }
 
     const cookieverify = () => {
