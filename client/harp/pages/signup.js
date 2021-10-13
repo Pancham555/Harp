@@ -16,6 +16,15 @@ const Signup = () => {
         password: "",
         cpassword: ""
     })
+
+    const setCookie = () => {
+        axios.post('/middleware/set', {
+            username: userData.name
+        }).then((res) => {
+            alert(res.data)
+        }).catch(err => console.log(err))
+    }
+
     const sendUserData = async () => {
         axios.post('/register/signup', {
             username: userData.name,
@@ -23,7 +32,14 @@ const Signup = () => {
             phone: userData.phone,
             password: userData.password,
             cpassword: userData.cpassword
-        }).then((res) => alert(res.data))
+        }).then((res) => {
+            if (res.data == "Account added successfully") {
+                setCookie()
+            }
+            else {
+                alert("Plz try again later")
+            }
+        })
             .catch((err) => console.log(err))
     }
 

@@ -12,21 +12,7 @@ router.post('/signup', (req, res) => {
                     res.send(`Failed to sign up.Plz try again later => ${err.code}`)
                 }
                 else {
-                    // Setting cookie
-                    const cookievalue = jwt.sign({ username }, process.env.JWTSECRET, { expiresIn: new Date(Date.now() + (60 * 60 * 1000)) })
-                    userModel.findOneAndUpdate(
-                        { username }, {
-                        $set: {
-                            cookie: cookievalue
-                        }
-                    }).exec((err, resp) => {
-                        if (!err && resp) {
-                            res.cookie('harpnett', cookievalue, { httpOnly: true, sameSite: false, path: '/', expires: new Date(Date.now() + (60 * 60 * 1000)) })
-                                .send("Sign up successfully & cookie added")
-                        } else {
-                            res.status(200).send("Something went wrong")
-                        }
-                    })
+                    res.send("Account added successfully")
                 }
             })
     }
