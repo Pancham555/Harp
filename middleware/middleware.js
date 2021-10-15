@@ -44,7 +44,6 @@ router.get('/', (req, res) => {
             const getUserName = async () => {
                 const useEmail = userModel.findOne({ email: value })
                 const userUserName = userModel.findOne({ username: value })
-                console.log(useEmail);
                 if (useEmail) {
                     useEmail.exec((err, resp) => {
                         if (err || !resp) { res.send("Something went wrong,please sign in again") }

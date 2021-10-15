@@ -5,9 +5,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Footer from '../Components/footer'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 const Profile = () => {
     const [user, setUser] = useState({ name: "User" })
-
+    const router = useRouter()
     const cookieverify = () => {
         axios.get('/middleware/').then((res) => {
             if (res.data.message == "Cookie verified") {
