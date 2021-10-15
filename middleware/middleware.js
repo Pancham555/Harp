@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 router.post('/set', (req, res) => {
     const { username } = req.body
     // Setting cookie
-    const cookievalue = jwt.sign({ username }, process.env.JWTSECRET, { expiresIn: Number(new Date(Date.now() + (60 * 60 * 1000))) })
+    const cookievalue = jwt.sign({ username }, process.env.JWTSECRET, { expiresIn: Number(new Date(Date.now() + (60 * 60 * 1000 * 24))) })
     userModel.findOneAndUpdate(
         { username }, {
         $set: {
@@ -14,7 +14,7 @@ router.post('/set', (req, res) => {
         }
     }).exec((err, resp) => {
         if (!err && resp) {
-            res.cookie('harpnett', cookievalue, { httpOnly: true, sameSite: false, path: '/', expires: new Date(Date.now() + (60 * 60 * 1000)) })
+            res.cookie('harpnett', cookievalue, { httpOnly: true, sameSite: false, path: '/', expires: new Date(Date.now() + (60 * 60 * 1000 * 24)) })
                 .send("Sign up successfully & cookie added")
         } else {
             res.status(200).send("Something went wrong")
@@ -39,7 +39,34 @@ router.get('/', (req, res) => {
             res.send("Cookie expired")
         }
         else {
-            res.send("Cookie verified")
+            const decode = jwt.decode(cookieObj.harpnett)
+            const value = decode.emailOrUsername
+            const getUserName = async () => {
+                const useEmail = userModel.findOne({ email: value })
+                const userUserName = userModel.findOne({ username: value })
+                console.log(useEmail);
+                if (useEmail) {
+                    useEmail.exec((err, resp) => {
+                        if (err || !resp) { res.send("Something went wrong,please sign in again") }
+                        else {
+                            res.json({ message: "Cookie verified", name: resp.username })
+                        }
+                    })
+                }
+                else if (userUserName) {
+                    userUserName.exec((err, resp) => {
+                        if (err || !resp) { res.send("Something went wrong,please sign in again") }
+                        else {
+                            res.json({ message: "Cookie verified", name: resp.username })
+                        }
+                    })
+                }
+                else {
+                    res.json({ message: "You are not a verified user" })
+                }
+
+            }
+            getUserName()
         }
     }))
 })

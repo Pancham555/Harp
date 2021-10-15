@@ -36,7 +36,7 @@ router.post('/signin', (req, res) => {
                 }
                 else {
                     // Setting cookie
-                    const cookievalue = jwt.sign({ emailOrUsername }, process.env.JWTSECRET, { expiresIn: Date.now() + (60 * 60 * 1000) })
+                    const cookievalue = jwt.sign({ emailOrUsername }, process.env.JWTSECRET, { expiresIn: Date.now() + (60 * 60 * 1000 * 24) })
                     userModel.findOneAndUpdate(
                         usernameExist ? { username: emailOrUsername } : { email: emailOrUsername }, {
                         $set: {
@@ -44,7 +44,7 @@ router.post('/signin', (req, res) => {
                         }
                     }).exec((err, resp) => {
                         if (!err && resp) {
-                            res.cookie('harpnett', cookievalue, { httpOnly: true, sameSite: false, path: '/', expires: new Date(Date.now() + (60 * 60 * 1000)) })
+                            res.cookie('harpnett', cookievalue, { httpOnly: true, sameSite: false, path: '/', expires: new Date(Date.now() + (60 * 60 * 1000 * 24)) })
                                 .send("User verified successfully & cookie updated")
                         } else {
                             res.status(200).send("Something went wrong")

@@ -1,10 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../Components/Navbar'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import Footer from '../Components/footer'
+import axios from 'axios'
 const Profile = () => {
+    const [user, setUser] = useState({ name: "User" })
+
+    const cookieverify = () => {
+        axios.get('/middleware/').then((res) => {
+            if (res.data.message == "Cookie verified") {
+                setUser({ ...user, name: res.data.name })
+            }
+            else {
+                router.push('/signin')
+            }
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
+    useEffect(() => {
+        cookieverify()
+    }, [])
     return (
         <div className='select-none'>
             <Head>
@@ -27,11 +46,11 @@ const Profile = () => {
                             unoptimized={true}
                         />
                     </div>
-                    <div className="mx-5">
-                        <div className="my-2 text-xl font-bold md:text-3xl">Lorem, ipsum. </div>
-                        <div className="font-medium text-md md:text-lg">
+                    <div className="mx-5 my-auto">
+                        <div className="my-2 text-xl font-bold md:text-3xl">{user.name}</div>
+                        {/* <div className="font-medium text-md md:text-lg">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

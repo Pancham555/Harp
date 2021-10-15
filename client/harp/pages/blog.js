@@ -21,8 +21,7 @@ const Blog = () => {
 
     const cookieverify = () => {
         axios.get('/middleware/').then((res) => {
-            console.log(res.data);
-            if (res.data == "Cookie verified") {
+            if (res.data.message == "Cookie verified") {
                 getData()
             }
             else {
