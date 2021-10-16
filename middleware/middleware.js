@@ -39,31 +39,25 @@ router.get('/', (req, res) => {
             res.send("Cookie expired")
         }
         else {
-            const decode = jwt.decode(cookieObj.harpnett)
-            const value = decode.emailOrUsername
             const getUserName = async () => {
-                const useEmail = userModel.findOne({ email: value })
-                const userUserName = userModel.findOne({ username: value })
-                if (useEmail) {
-                    useEmail.exec((err, resp) => {
-                        if (err || !resp) { res.send("Something went wrong,please sign in again") }
-                        else {
-                            res.json({ message: "Cookie verified", name: resp.username })
-                        }
-                    })
-                }
-                else if (userUserName) {
-                    userUserName.exec((err, resp) => {
-                        if (err || !resp) { res.send("Something went wrong,please sign in again") }
-                        else {
-                            res.json({ message: "Cookie verified", name: resp.username })
-                        }
-                    })
-                }
-                else {
+                const decode = jwt.decode(cookieObj.harpnett)
+                const value = await decode.emailOrUsername
+                const useEmail = await userModel.findOne({ email: value })
+                const useUserName = await userModel.findOne({ username: value })
+                if (!useUserName && !useEmail) {
                     res.json({ message: "You are not a verified user" })
                 }
-
+                else {
+                    userModel.findOne(useUserName ? { username: value }
+                        : { email: value }).exec((error, response) => {
+                            if (error || !response) {
+                                res.send("Something went wrong,please sign in again")
+                            }
+                            else {
+                                res.json({ message: "Cookie verified", name: response.username })
+                            }
+                        })
+                }
             }
             getUserName()
         }
