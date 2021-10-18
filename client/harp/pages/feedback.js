@@ -1,27 +1,50 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import ChatCard from '../Components/chat/chatCard'
 import Navbar from '../Components/Navbar'
 import ChatSender from '../Components/chat/chatSender'
 import axios from 'axios'
 const Feedback = () => {
-    const [chat, showChat] = useState([])
+    const [user, setUser] = useState({ name: "user" })
     const [text, setText] = useState("")
-    const getData = () => {
-        axios.get('/feedbackserverr').then(res => {
-            showChat(res.data)
-        }).catch(err => console.log(err))
-    }
-    const sendData = () => {
-        axios.post('/feedbackserver', {
-            chat: text
-        }).then(data => console.log(data.data))
-            .catch(err => console.log(err))
-        setText("")
+    const [chat, setchat] = useState([])
+    const router = useRouter()
+
+    const cookieverify = () => {
+        axios.get('/middleware/').then((res) => {
+            if (res.data.message == "Cookie verified") {
+                setUser({ ...user, name: res.data.name })
+            }
+            else {
+                router.push('/signin')
+            }
+        }).catch((err) => {
+            console.log(err);
+        })
     }
 
+    const getChatData = () => {
+        axios.get('/feedbackserver').then(res => {
+            setchat(res.data)
+        }).catch(err => console.log(err))
+    }
+
+    const sendChatData = () => {
+        if (text == "") {
+            alert("Feedback canot be empty")
+        } else {
+            axios.post('/feedbackserver', {
+                userfeedback: text
+            }).then(res => {
+                alert(res.data)
+            }).catch(err => console.log(err))
+        }
+        setText("")
+    }
     useEffect(() => {
-        getData()
+        cookieverify()
+        getChatData()
     }, [chat])
     return (
         <>
@@ -35,12 +58,12 @@ const Feedback = () => {
                 <ChatCard chatman="Unknown" chat="Hello there, this is a chat room,bring your friends here and chat :)" />
                 {chat.map((data, index) => {
                     return <div key={index}>
-                        <ChatCard chat={data.chat} />
+                        <ChatCard chatman={data.head ? "harpnett" : user.name} chat={data.remarks} />
                     </div>
                 })}
             </div>
             <ChatSender statechange={text} inputchange={(e) => setText(e.target.value)}
-                click={sendData} />
+                click={sendChatData} />
         </>
     )
 }

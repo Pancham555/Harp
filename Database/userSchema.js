@@ -1,6 +1,12 @@
 var mongoose = require('mongoose');
 const bcryptjs = require('bcryptjs')
 const connection = require('./connection')
+
+const feedbackSchema = new mongoose.Schema({
+    head: { type: Boolean, required: true },
+    remarks: String
+})
+
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -27,7 +33,7 @@ const userSchema = new mongoose.Schema({
         minlength: 8,
         required: true
     },
-    feedback: [String],
+    feedback: [feedbackSchema],
     cookie: String
 })
 

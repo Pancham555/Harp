@@ -24,23 +24,15 @@ router.post('/set', (req, res) => {
 
 // To verify cookie --> in every page except registration forms
 router.get('/', (req, res) => {
-    const cookie = req.headers.cookie.split('; ')
-    const cookieObj = {}
-    cookie.forEach(data => {
-        const value = data.split("=")
+    const { harpnett } = req.cookies
 
-        cookieObj[value[0]] = value[1]
-
-        return cookieObj
-    })
-
-    jwt.verify(cookieObj.harpnett, process.env.JWTSECRET, ((err, resp) => {
+    jwt.verify(harpnett, process.env.JWTSECRET, ((err, resp) => {
         if (err || !resp) {
             res.send("Cookie expired")
         }
         else {
             const getUserName = async () => {
-                const decode = jwt.decode(cookieObj.harpnett)
+                const decode = jwt.decode(harpnett)
                 const value = await decode.emailOrUsername
                 const useEmail = await userModel.findOne({ email: value })
                 const useUserName = await userModel.findOne({ username: value })
