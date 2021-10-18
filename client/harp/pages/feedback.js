@@ -55,7 +55,8 @@ const Feedback = () => {
             </Head>
             <Navbar />
             <div className='mt-5 mb-20'>
-                <ChatCard chatman="Unknown" chat="Hello there, this is a chat room,bring your friends here and chat :)" />
+                <ChatCard chatman="harpnett" chat={`Hello there ,if you are facing some
+                 issues in our site, please feel free to give your feedback here :)`} />
                 {chat.map((data, index) => {
                     return <div key={index}>
                         <ChatCard chatman={data.head ? "harpnett" : user.name} chat={data.remarks} />
