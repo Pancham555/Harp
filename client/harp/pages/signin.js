@@ -20,8 +20,6 @@ const SignIn = () => {
             emailOrUsername: userData.emailOrUsername,
             password: userData.password,
 
-        }, {
-            withCredentials: true
         }).then((res) => {
             alert(res.data)
         }).catch((err) => alert(err))

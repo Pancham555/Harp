@@ -11,10 +11,17 @@ const Feedback = () => {
     const [chat, setchat] = useState([])
     const router = useRouter()
 
+    const getChatData = () => {
+        axios.get('/feedbackserver').then(res => {
+            setchat(res.data)
+        }).catch(err => console.log(err))
+    }
+
     const cookieverify = () => {
         axios.get('/middleware/').then((res) => {
             if (res.data.message == "Cookie verified") {
                 setUser({ ...user, name: res.data.name })
+                getChatData()
             }
             else {
                 router.push('/signin')
@@ -22,12 +29,6 @@ const Feedback = () => {
         }).catch((err) => {
             console.log(err);
         })
-    }
-
-    const getChatData = () => {
-        axios.get('/feedbackserver').then(res => {
-            setchat(res.data)
-        }).catch(err => console.log(err))
     }
 
     const sendChatData = () => {
@@ -44,7 +45,6 @@ const Feedback = () => {
     }
     useEffect(() => {
         cookieverify()
-        getChatData()
     }, [chat])
     return (
         <>
@@ -55,8 +55,8 @@ const Feedback = () => {
             </Head>
             <Navbar />
             <div className='mt-5 mb-20'>
-                <ChatCard chatman="harpnett" chat={`Hello there ,if you are facing some
-                 issues in our site, please feel free to give your feedback here :)`} />
+                <ChatCard chatman="harpnett"
+                    chat={`Hello there ,if you are facing some issues in our site, please feel free to give your feedback here :)`} />
                 {chat.map((data, index) => {
                     return <div key={index}>
                         <ChatCard chatman={data.head ? "harpnett" : user.name} chat={data.remarks} />

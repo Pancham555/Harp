@@ -27,12 +27,12 @@ router.post('/signin', (req, res) => {
             const usernameExist = await userModel.findOne({ username: emailOrUsername })
             const emailExist = await userModel.findOne({ email: emailOrUsername })
             if (!usernameExist && !emailExist) {
-                res.status(200).send("No such email or username exists")
+                res.send("No such email or username exists")
             }
             else {
                 const verify = bcryptjs.compareSync(password, usernameExist ? usernameExist.password : emailExist.password)
                 if (!verify) {
-                    res.status(200).send("User verification failed")
+                    res.send("User verification failed")
                 }
                 else {
                     // Setting cookie
