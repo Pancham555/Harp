@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
 
     jwt.verify(harpnett, process.env.JWTSECRET, ((err, resp) => {
         if (err || !resp) {
-            res.send("Cookie expired")
+            res.json({ message: "Cookie expired" })
         }
         else {
             const getUserName = async () => {
@@ -43,7 +43,7 @@ router.get('/', (req, res) => {
                     userModel.findOne(useUserName ? { username: value }
                         : { email: value }).exec((error, response) => {
                             if (error || !response) {
-                                res.send("Something went wrong,please sign in again")
+                                res.json({ message: "Something went wrong,please sign in again" })
                             }
                             else {
                                 res.json({ message: "Cookie verified", name: response.username })
@@ -56,5 +56,9 @@ router.get('/', (req, res) => {
     }))
 })
 
+// To remove the cookie
+router.post('/remove', (req, res) => {
+    res.clearCookie('harpnett').send("Logged out successfully")
+})
 
 module.exports = router

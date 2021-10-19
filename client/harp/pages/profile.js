@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 const Profile = () => {
     const [user, setUser] = useState({ name: "User" })
     const router = useRouter()
+
     const cookieverify = () => {
         axios.get('/middleware/').then((res) => {
             if (res.data.message == "Cookie verified") {
@@ -20,6 +21,13 @@ const Profile = () => {
         }).catch((err) => {
             console.log(err);
         })
+    }
+
+    const logOut = () => {
+        axios.post('/middleware/remove').then((res) => {
+            alert(res.data)
+            router.push('/')
+        }).catch(err => console.log(err))
     }
 
     useEffect(() => {
@@ -56,10 +64,10 @@ const Profile = () => {
                 </div>
             </div>
             <div className="flex justify-center mt-2 mb-5">
-                <div className="px-4 py-4 m-2 font-medium text-white bg-blue-500 rounded cursor-pointer text-md">Create chat room</div>
-                <Link href='/chat' passHref>
+                <div className="px-4 py-4 m-2 font-medium text-white bg-blue-500 rounded cursor-pointer text-md" onClick={logOut}>Log out</div>
+                {/* <Link href='/chat' passHref>
                     <div className="px-4 py-4 m-2 font-medium text-white bg-blue-500 rounded cursor-pointer text-md">Go to chat room</div>
-                </Link>
+                </Link> */}
             </div>
             <Footer />
         </div>
